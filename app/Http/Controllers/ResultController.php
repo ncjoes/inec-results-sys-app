@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Lga;
 use App\Models\Party;
+use App\Models\Result;
 use App\Models\State;
 use App\Models\Unit;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -52,6 +54,28 @@ class ResultController extends Controller
 
     public function showNewResultForm(Request $request)
     {
+        $parties = Party::all();
+        $states  = State::orderBy('state_name')->get();
 
+        return view('results.new-result', [
+            'states'  => $states,
+            'parties' => $parties,
+        ]);
+    }
+
+    public function createResult(Request $request): array
+    {
+        $data                    = $request->validate([
+            'polling_unit_uniqueid' => 'required|exists:polling_unit,uniqueid',
+            'party_abbreviation'    => 'required|exists:party,partyid',
+            'party_score'           => 'required|numeric',
+            'entered_by_user'       => 'required|string',
+        ]);
+        $data['date_entered']    = Carbon::now();
+        $data['user_ip_address'] = $request->ip();
+
+        Result::create($data);
+
+        return ['status' => true, 'message' => 'Result Submitted!', 'redirect' => back()->getTargetUrl()];
     }
 }

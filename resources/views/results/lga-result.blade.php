@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-md-3">
                     <br/>
-                    <button type="submit" class="form-control btn btn-primary">Search</button>
+                    <button type="submit" class="form-control btn btn-primary">View Result</button>
                 </div>
             </form>
         </div>

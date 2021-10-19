@@ -89,10 +89,8 @@
 </div>
 <script src="{{asset('js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/jquery-ui-1.10.4.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/toastr.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/utils.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/task-list-base.js')}}" type="text/javascript"></script>
-
+@yield('scripts')
 </body>
 </html>

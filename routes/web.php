@@ -19,4 +19,4 @@ Route::get('/', [ResultController::class, 'index'])->name('index');
 Route::get('polling-unit-result/{unit}', [ResultController::class, 'showUnitResult'])->name('unit-result');
 Route::get('lga-result/{lga}', [ResultController::class, 'showLgaResult'])->name('lga-result');
 Route::get('new-result', [ResultController::class, 'showNewResultForm'])->name('new-result');
-Route::post('new-result', [ResultController::class, 'create'])->name('add-task');
+Route::post('new-result', [ResultController::class, 'createResult'])->name('new-result');
