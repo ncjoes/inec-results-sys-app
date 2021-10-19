@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lga;
 use App\Models\State;
-use app\Models\Ward;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -23,8 +23,11 @@ class ResultController extends Controller
         ]);
     }
 
-    public function showWardResult(Request $request, Ward $ward)
+    public function showUnitResult(Request $request, Unit $unit)
     {
+        return view('results.polling-unit-result', [
+            'unit' => $unit,
+        ]);
 
     }
 

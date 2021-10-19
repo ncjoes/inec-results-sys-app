@@ -9,7 +9,7 @@
         <table class="table table-hover">
             <thead>
             <tr class="">
-                <td colspan="4">
+                <td colspan="5">
                     <form method="get" class="form-horizontal">
                         <div class="col-md-4">
                             <label for="states" class="control-label">State:</label>
@@ -51,30 +51,32 @@
 
             @if(is_object($requested_lga))
                 <tr>
-                    <td>Ward ID</td>
-                    <td>Ward Name</td>
-                    <td>Ward Description</td>
+                    <td>Polling Unit ID</td>
+                    <td>Unit Name</td>
+                    <td>Description</td>
+                    <td>Location</td>
                     <td width="15%">...</td>
                 </tr>
             @endif
             </thead>
             @if(is_object($requested_lga))
                 <tbody>
-                @foreach($requested_lga->wards as $ward)
+                @foreach($requested_lga->units as $unit)
                     <tr>
-                        <td>{{$ward->ward_id}}</td>
-                        <td>{{$ward->ward_name}}</td>
-                        <td>{{$ward->ward_description}}</td>
-                        <td><a href="{{route('ward-result',['ward'=>$ward->uniqueid])}}">View Ward Result</a></td>
+                        <td>{{$unit->polling_unit_number}}</td>
+                        <td>{{$unit->polling_unit_name}}</td>
+                        <td>{{$unit->polling_unit_description}}</td>
+                        <td>Lat.-{{$unit->lat}}, Long.-{{$unit->long}}</td>
+                        <td><a href="{{route('unit-result',['unit'=>$unit->uniqueid])}}">View Unit Result</a></td>
                     </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="5">
                         <p class="text-center">
-                            <a href="{{route('lga-result',['lga'=>$requested_lga->uniqueid])}}" class="btn form-control btn-lg btn-default">
-                                View Net Results for {{$requested_lga->lga_name}}
+                            <a href="{{route('lga-result', ['lga'=>$requested_lga->uniqueid])}}" class="btn form-control btn-lg btn-default">
+                                View Net Results for all Polling Units in {{$requested_lga->lga_name}} LGA
                             </a>
                         </p>
                     </td>

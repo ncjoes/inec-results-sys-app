@@ -26,8 +26,14 @@
     <link href="{{asset('/css/toastr.min.css')}}" rel="stylesheet">
 
     <style rel="text/css">
-        .sortable tr {
-            cursor: grab;
+        td.label {
+            width: 20%;
+            color: black !important;
+        }
+
+        td.value {
+            width: auto;
+            font-weight: bold;
         }
     </style>
 

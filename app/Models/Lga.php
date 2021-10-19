@@ -17,6 +17,11 @@ class Lga extends Model
 
     public function wards()
     {
-        return $this->hasMany(Ward::class, 'lga_id', 'lga_id')->orderBy('ward_name');
+        return $this->hasMany(Ward::class, 'lga_id', 'lga_id')->orderBy('ward_id');
+    }
+
+    public function units()
+    {
+        return $this->hasMany(Unit::class, 'lga_id', 'lga_id')->orderBy('polling_unit_name');
     }
 }
