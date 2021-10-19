@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [ResultController::class, 'index'])->name('index');
+Route::get('lga-result/{lga}', [ResultController::class, 'showLgaResult'])->name('lga-result');
+Route::get('ward-result/{ward}', [ResultController::class, 'showWardResult'])->name('ward-result');
+Route::get('new-result', [ResultController::class, 'showNewResultForm'])->name('new-result');
+Route::post('new-result', [ResultController::class, 'create'])->name('add-task');
