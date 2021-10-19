@@ -8,7 +8,7 @@ This is a demo laravel app implementing limited features in accordance with the 
  * Create a MySQL user and a database. Do not forget to assign appropriate privileges to the new user.
  * Update the values of the `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` variables with your new database credentials.
  * Ensure you set the correct owner/permissions values for the app directory and the storage subdirectory
- * Run `php artisan migrate` to create the required database tables
+ * Import the `bicom_test.sql` file
 
  Congratulations! You're all set.
 
@@ -16,7 +16,5 @@ This is a demo laravel app implementing limited features in accordance with the 
 
 ## Third Party Scripts Used
 
-- **[jQuery-jQuery-UI-Based-Task-Management-Plugin-Task-List](https://www.jqueryscript.net/other/jQuery-jQuery-UI-Based-Task-Management-Plugin-Task-List.html)**
 - **[jQuery Library](https://jquery.com/)**
 - **[Bootstrap Framework](https://getbootstrap.com/docs/3.4/getting-started/)**
-
