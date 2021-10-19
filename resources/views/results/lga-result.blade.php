@@ -67,8 +67,49 @@
             </tfoot>
         </table>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form method="get" class="form-horizontal">
+                <div class="col-md-4">
+                    <label for="states" class="control-label">State:</label>
+                    <select name="state_id" id="states" class="form-control" required>
+                        <option></option>
+                        @foreach($states as $state)
+                            @if($state->lgas()->count())
+                                <option value="{{$state->state_id}}" @if($state->state_id == $search['state_id']) selected @endif>
+                                    {{$state->state_name}}
+                                </option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label for="lgas" class="control-label">LGA:</label>
+                    <select name="lga_id" id="lgas" class="form-control" required>
+                        <option></option>
+                        @foreach($states as $state)
+                            @if($state->lgas()->count())
+                                <optgroup label="{{$state->state_name}}">
+                                    @foreach($state->lgas as $_lga)
+                                        <option value="{{$_lga->lga_id}}" @if($_lga->is($lga)) selected @endif>
+                                            {{$_lga->lga_name}}
+                                        </option>
+                                    @endforeach
+                                </optgroup>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <br/>
+                    <button type="submit" class="form-control btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <p class="text-center">
-        <a href="{{route('index',['lga_id'=>$unit->lga->lga_id,'state_id'=>$unit->lga->state->state_id])}}" class="btn form-control btn-default">
+        <a href="{{route('index',['lga_id'=>$lga->lga_id,'state_id'=>$lga->state->state_id])}}" class="btn form-control btn-default">
             Back to Dashboard
         </a>
     </p>

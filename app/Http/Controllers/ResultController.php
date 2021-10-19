@@ -34,11 +34,19 @@ class ResultController extends Controller
 
     public function showLgaResult(Request $request, Lga $lga)
     {
-        $parties = Party::all();
+        $parties       = Party::all();
+        $states        = State::orderBy('state_name')->get();
+        $search        = array_merge(['state_id' => $lga->state_id, 'lga_id' => $lga->id,], $request->only(['state_id', 'lga_id']));
+        $requested_lga = Lga::where(['lga_id' => $search['lga_id']])->first();
+        if (!is_null($search['lga_id']) && !$lga->is($requested_lga)) {
+            return redirect()->route('lga-result', ['lga' => $requested_lga]);
+        }
 
         return view('results.lga-result', [
             'lga'     => $lga,
             'parties' => $parties,
+            'states'  => $states,
+            'search'  => $search,
         ]);
     }
 
