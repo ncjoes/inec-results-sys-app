@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Lga extends Model
 {
     public    $timestamps   = false;
-    public    $incrementing = false;
     protected $table        = 'lga';
     protected $primaryKey   = 'uniqueid';
 
@@ -18,6 +17,6 @@ class Lga extends Model
 
     public function wards()
     {
-        return $this->hasMany(Ward::class, 'lga_id', 'lga_id');
+        return $this->hasMany(Ward::class, 'lga_id', 'lga_id')->orderBy('ward_name');
     }
 }
