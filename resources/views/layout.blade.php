@@ -27,12 +27,12 @@
 
     <style rel="text/css">
         td.label {
-            width: 20%;
+            width: 20% !important;
             color: black !important;
         }
 
         td.value {
-            width: auto;
+            width: 80% !important;
             font-weight: bold;
         }
     </style>

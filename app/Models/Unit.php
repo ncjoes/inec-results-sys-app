@@ -29,4 +29,9 @@ class Unit extends Model
     {
         return $this->hasMany(Result::class, 'polling_unit_uniqueid', 'uniqueid')->orderByDesc('party_score');
     }
+
+    public function getPartyScores()
+    {
+        return $this->results()->pluck('party_score', 'party_abbreviation')->all();
+    }
 }

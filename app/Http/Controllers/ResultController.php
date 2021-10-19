@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Lga;
+use App\Models\Party;
 use App\Models\State;
 use App\Models\Unit;
 use Illuminate\Http\Request;
@@ -33,7 +34,12 @@ class ResultController extends Controller
 
     public function showLgaResult(Request $request, Lga $lga)
     {
+        $parties = Party::all();
 
+        return view('results.lga-result', [
+            'lga'     => $lga,
+            'parties' => $parties,
+        ]);
     }
 
     public function showNewResultForm(Request $request)
